@@ -59,14 +59,15 @@ public class ProductController {
 	
 	//FULL UPDATE
 	@PutMapping("/{id}")
-	public Product updateProduct(@PathVariable @RequestBody Integer id ,ProductDto dto)  {
-		
-		return service.updateProduct(id, dto);
+	public Product updateProduct(@PathVariable Integer id,
+	                             @RequestBody ProductDto dto) {
+
+	    return service.updateProduct(id, dto);
 	}
 	
 	//PARTIAL UPDATE
 	@PatchMapping("/{id}")
-	public Product partialUpdate(@PathVariable @RequestBody Integer id ,ProductDto dto  ) {
+	public Product partialUpdate(@PathVariable Integer id, @RequestBody ProductDto dto  ) {
 		
 		return service.partialUpdate(id, dto);
 	}
@@ -91,6 +92,12 @@ public class ProductController {
 
         return service.getPriceGreaterThan(price);
         
+    }
+    @GetMapping("/price/less/{price}")
+    public List<Product> getPriceLessThan(
+            @PathVariable double price) {
+
+        return service.getPriceLessThan(price);
     }
     
     // Product Name Contains

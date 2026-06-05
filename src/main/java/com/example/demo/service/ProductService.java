@@ -71,31 +71,31 @@ public class ProductService {
 	
 	//PARTIAL UPDATE
 	public Product partialUpdate(Integer id, ProductDto dto) {
-		
-		Product product = repository.findById(id).orElse(null);
-		
-		if(product != null) {
-			
-			if (dto.getProductName() != null) {
-				product.setProductName(dto.getProductName());
-				
-			}
-			
-			if(dto.getCategory() != null) {
-				product.setCategory(dto.getCategory());
-				
-			}
-			
-			if(dto.getPrice() != 0) {
-				product.setPrice(dto.getPrice());
-			}
-			  if (dto.getQuantity() != 0) {
-	                product.setQuantity(dto.getQuantity());
-	            }
-			  return repository.save(product);
-		}
-		
-		return null;
+
+	    Product product = repository.findById(id).orElse(null);
+
+	    if(product != null) {
+
+	        if(dto.getProductName() != null) {
+	            product.setProductName(dto.getProductName());
+	        }
+
+	        if(dto.getCategory() != null) {
+	            product.setCategory(dto.getCategory());
+	        }
+
+	        if(dto.getPrice() != null) {
+	            product.setPrice(dto.getPrice());
+	        }
+
+	        if(dto.getQuantity() != null) {
+	            product.setQuantity(dto.getQuantity());
+	        }
+
+	        return repository.save(product);
+	    }
+
+	    return null;
 	}
 	
 	//FIND BY PRODUCT NAME
@@ -125,14 +125,14 @@ public class ProductService {
     }
     
     // Category And Price Less Than
-    public List<Product> getByCategoryAndPrice(String category, double price) {
+    public List<Product> getByCategoryAndPrice(String category, Double price) {
         return repository.findByCategoryAndPriceLessThan(category, price);
     }
     
    
 
     // Price Between
-    public List<Product> getPriceBetween(double start, double end) {
+    public List<Product> getPriceBetween(double start, Double end) {
         return repository.findByPriceBetween(start, end);
     }
     // Name Starting With

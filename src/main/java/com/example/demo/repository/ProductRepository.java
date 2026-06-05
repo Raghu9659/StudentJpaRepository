@@ -22,7 +22,7 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
 	
 	List<Product> findByQuantityGreaterThan(int quantity);
 	
-	List<Product> findByCategoryAndPriceLessThan(String category, double price);
+	List<Product> findByCategoryAndPriceLessThan(String category, Double price);
 	
 	
 	
